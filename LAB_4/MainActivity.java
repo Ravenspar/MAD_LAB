@@ -25,9 +25,13 @@ public class MainActivity extends AppCompatActivity {  Button wallpaperChange;
     WallpaperManager wpm;
     int prev = 1;
     @Override
-    protected void onCreate(Bundle savedInstanceState) {  super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);  mytimer = new Timer();
-        wpm = WallpaperManager.getInstance(this);  wallpaperChange = (Button) findViewById(R.id.button1);  wallpaperChange.setOnClickListener(new  View.OnClickListener() {
+    protected void onCreate(Bundle savedInstanceState) {  
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);  
+        mytimer = new Timer();
+        wpm = WallpaperManager.getInstance(this);  
+        wallpaperChange = (Button) findViewById(R.id.button1);  
+        wallpaperChange.setOnClickListener(new  View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 setwallpaper();
@@ -56,11 +60,13 @@ public class MainActivity extends AppCompatActivity {  Button wallpaperChange;
                     drawable =
                             getResources().getDrawable(R.drawable.img5); prev=1;  }
                 Bitmap wallpaper =
-                        ((BitmapDrawable)drawable).getBitmap(); try {  wpm.setBitmap(wallpaper);
-            }
-            catch (IOException e)
-            { e.printStackTrace();
-            }
+                        ((BitmapDrawable)drawable).getBitmap(); 
+                        try {  
+                            wpm.setBitmap(wallpaper);
+                        }
+                        catch (IOException e){
+                            e.printStackTrace();
+                        }
             }
         },0,30000);
     }
